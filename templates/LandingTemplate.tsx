@@ -1495,6 +1495,7 @@ export default function LandingTemplate({ page, site }: { page: PageData; site: 
     if (Array.isArray(media)) return getMediaAlt(media[0], fallback)
     return media.alt || media.alternativeText || media.name || fallback
   }
+  const processedContent = page.content || ''
   const footerImages = (Array.isArray(data.footer_images) ? data.footer_images : data.footerImages || [])
       .map((item, index) => ({
         ...item,
@@ -1670,10 +1671,10 @@ export default function LandingTemplate({ page, site }: { page: PageData; site: 
 
 
       {/* Custom Content Section */}
-      {page.content && (
+      {processedContent && (
           <section className="content-section">
             <div className="container">
-              <div className="content-wrapper" dangerouslySetInnerHTML={{ __html: page.content }} />
+              <div className="content-wrapper" dangerouslySetInnerHTML={{ __html: processedContent }} />
             </div>
           </section>
       )}

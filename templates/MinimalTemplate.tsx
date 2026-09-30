@@ -557,7 +557,8 @@ export default function MinimalTemplate({ page, site }: { page: PageData; site: 
     })
   }
 
-  const processedContent = page.content ? replaceVariables(page.content) : site.content ? replaceVariables(site.content) : ''
+  const contentSource = page.content || site.content || ''
+  const processedContent = contentSource ? replaceVariables(contentSource) : ''
   const backgroundImage = getMediaUrl(page.heroImage || page.hero_image || site.heroImage || site.hero_image || site.main_background_img)
   const popupLogoSource = page.popup_logo || site.popup_logo
   const popupLogo = getMediaUrl(popupLogoSource)

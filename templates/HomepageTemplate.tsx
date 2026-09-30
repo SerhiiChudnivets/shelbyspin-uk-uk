@@ -787,7 +787,8 @@ export default function HomepageTemplate({ page, site }: { page: PageData; site:
     return result
   }
 
-  const processedContent = page.content ? replaceVariables(page.content) : site.content ? replaceVariables(site.content) : ''
+  const contentSource = page.content || site.content || ''
+  const processedContent = contentSource ? replaceVariables(contentSource) : ''
 
   let pageSlots: Slot[] = []
   if (Array.isArray(page.Slots)) {
